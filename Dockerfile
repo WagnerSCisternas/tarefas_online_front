@@ -33,9 +33,10 @@ WORKDIR /app
 # O nome do JAR será <artifactId>-<version>.jar.
 # **IMPORTANTE**: Verifique o nome exato do seu arquivo .jar na pasta 'target/'
 # do seu projeto local (após você rodar 'mvn clean install -DskipTests').
-# Para este projeto frontend, o nome esperado é 'frontend-tarefas-web-0.0.1-SNAPSHOT.jar'.
+# Para este projeto frontend, o nome esperado é 'com.tarefasonline-0.0.1-SNAPSHOT.jar'.
 # Renomeamos para 'app.jar' dentro do contêiner para simplicidade.
-COPY --from=build /app/target/frontend-tarefas-web-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/com.tarefasonline-0.0.1-SNAPSHOT.jar app.jar
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ CORRIGIDO AQUI: para o nome exato do JAR
 
 # Expõe a porta que a aplicação Spring Boot usará (padrão 8081 para este frontend).
 EXPOSE 8081
