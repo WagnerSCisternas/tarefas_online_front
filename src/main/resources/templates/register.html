@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta - Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gerenciador de Tarefas</h1>
+
+        <div th:if="${error}" class="message error">
+            <p th:text="${error}"></p>
+        </div>
+
+        <section id="registerScreen">
+            <h2>Criar Nova Conta</h2>
+            <form action="/register" method="post" th:object="${usuario}">
+                <div>
+                    <label for="nome">Nome de Usuário:</label>
+                    <input type="text" id="nome" name="nome" th:field="*{nome}" required>
+                </div>
+                <div>
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" th:field="*{senha}" required>
+                </div>
+                <div>
+                    <label for="dataNascimento">Data de Nascimento:</label>
+                    <input type="date" id="dataNascimento" name="dataNascimento" th:field="*{dataNascimento}" required>
+                </div>
+                <div>
+                    <label for="ativo">Ativo:</label>
+                    <input type="checkbox" id="ativo" name="ativo" th:field="*{ativo}">
+                </div>
+                <button type="submit">Registrar</button>
+                <a href="/login"><button type="button">Voltar para Login</button></a>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

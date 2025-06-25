@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gerenciador de Tarefas</h1>
+
+        <div th:if="${error}" class="message error">
+            <p th:text="${error}"></p>
+        </div>
+        <div th:if="${message}" class="message success">
+            <p th:text="${message}"></p>
+        </div>
+
+        <section id="appScreen">
+            <div class="header-app">
+                <h2 th:text="'Olá, ' + ${loggedInUser} + '!'">Minhas Tarefas</h2>
+                <a href="/logout"><button type="button" id="logoutBtn">Sair</button></a>
+            </div>
+           
+            <div class="form-section">
+                <h3>Adicionar/Editar Tarefa</h3>
+                <form action="/tasks" method="post" th:object="${tarefa}">
+                    <input type="hidden" th:field="*{id}">
+                    <div>
+                        <label for="titulo">Título:</label>
+                        <input type="text" id="titulo" name="titulo" th:field="*{titulo}" maxlength="100" required>
+                    </div>
+                    <div>
+                        <label for="descricao">Descrição:</label>
+                        <textarea id="descricao" name="descricao" th:field="*{descricao}" rows="3" required></textarea>
+                    </div>
+                    <div>
+                        <label for="data">Data:</label>
+                        <input type="date" id="data" name="data" th:field="*{data}" required>
+                    </div>
+                    <div>
+                        <label for="status">Concluída:</label>
+                        <input type="checkbox" id="status" name="status" th:field="*{status}">
+                    </div>
+                    <div>
+                        <label for="usuarioId">Usuário:</label>
+                        <select id="usuarioId" name="usuarioId" required>
+                            <option value="">Selecione um usuário</option>
+                            <option th:each="user : ${usuarios}" 
+                                    th:value="${user.id}" 
+                                    th:text="${user.nome}"
+                                    th:selected="${tarefa.usuario != null and tarefa.usuario.id == user.id}"></option>
+                        </select>
+                    </div>
+                    <button type="submit">Salvar Tarefa</button>
+                    <a href="/tasks"><button type="button">Cancelar Edição</button></a>
+                </form>
+            </div>
+
+            <div class="table-section">
+                <h3>Lista de Tarefas</h3>
+                <table id="tasksTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Descrição</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                            <th>Usuário</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${tarefas.empty}">
+                            <td colspan="7">Nenhuma tarefa encontrada.</td>
+                        </tr>
+                        <tr th:each="task : ${tarefas}">
+                            <td th:text="${task.id}" data-label="ID"></td>
+                            <td th:text="${task.titulo}" data-label="Título"></td>
+                            <td th:text="${task.descricao}" data-label="Descrição"></td>
+                            <td th:text="${task.data}" data-label="Data"></td>
+                            <td th:text="${task.status ? 'Concluída' : 'Pendente'}" data-label="Status"></td>
+                            <td th:text="${task.usuario != null ? task.usuario.nome : 'N/A'}" data-label="Usuário"></td>
+                            <td data-label="Ações">
+                                <a th:href="@{/tasks/edit/{id}(id=${task.id})}"><button type="button" class="edit-button">Editar</button></a>
+                                <a th:href="@{/tasks/delete/{id}(id=${task.id})}"><button type="button" class="delete-button">Excluir</button></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

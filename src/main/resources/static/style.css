@@ -1,0 +1,333 @@
+/* Paleta de Cores Profissional */
+:root {
+    --primary-blue: #3498db; /* Azul vibrante */
+    --secondary-blue: #2980b9; /* Azul mais escuro */
+    --text-dark: #34495e; /* Texto principal escuro */
+    --text-light: #ecf0f1; /* Texto claro (para fundos escuros) */
+    --background-light: #f4f6f9; /* Fundo claro para o corpo */
+    --card-background: #ffffff; /* Fundo de cartões/seções */
+    --border-color: #e0e6ed; /* Cor de borda suave */
+    --success-color: #2ecc71; /* Verde de sucesso */
+    --error-color: #e74c3c; /* Vermelho de erro */
+    --warning-color: #f39c12; /* Laranja de aviso */
+    --button-edit: #f1c40f; /* Amarelo para editar */
+    --button-delete: #e74c3c; /* Vermelho para deletar */
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* Preferindo Inter para um look moderno */
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha no topo, não centraliza verticalmente a página inteira */
+    min-height: 100vh; /* Garante que o body ocupe pelo menos a altura da viewport */
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 960px;
+    margin: 30px auto; /* Aumenta margem superior/inferior */
+    background-color: var(--card-background);
+    padding: 30px 40px; /* Aumenta padding horizontal */
+    border-radius: 12px; /* Cantos mais arredondados */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 40px;
+    font-size: 2.5rem; /* Título maior */
+    font-weight: 700;
+}
+
+h2, h3 {
+    color: var(--secondary-blue);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 12px;
+    margin-top: 35px;
+    margin-bottom: 25px;
+    font-size: 1.8rem; /* Subtítulos maiores */
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* --- Mensagens --- */
+.message {
+    padding: 15px 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.5s ease-out; /* Animação suave */
+}
+
+.message.info {
+    background-color: #eaf6fc;
+    color: var(--primary-blue);
+    border: 1px solid #c9e6f6;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: var(--success-color);
+    border: 1px solid #c5edd4;
+}
+
+.message.error {
+    background-color: #fcebeb;
+    color: var(--error-color);
+    border: 1px solid #f6d1d1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Formulários --- */
+form {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 30px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra interna sutil */
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+textarea,
+select {
+    width: 100%; /* Ocupa 100% da largura do pai */
+    padding: 14px 15px; /* Aumenta padding */
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Mais arredondado */
+    font-size: 1.05rem; /* Fonte ligeiramente maior */
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); /* Sombra de foco azul */
+    outline: none; /* Remove outline padrão */
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.3); /* Aumenta um pouco mais */
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+button {
+    padding: 14px 30px; /* Mais padding */
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px; /* Mais arredondado */
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-right: 15px; /* Espaçamento maior entre botões */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para botões */
+}
+
+button:hover {
+    background-color: var(--secondary-blue);
+    transform: translateY(-2px); /* Efeito de "levantar" */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para botões específicos */
+.delete-button {
+    background-color: var(--button-delete);
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+}
+
+.edit-button {
+    background-color: var(--button-edit);
+    color: var(--text-dark); /* Texto escuro para botão amarelo */
+}
+
+.edit-button:hover {
+    background-color: #d6b328;
+}
+
+/* --- Tabela de Tarefas --- */
+table {
+    width: 100%;
+    border-collapse: separate; /* Permite border-radius nas células */
+    border-spacing: 0; /* Remove espaço entre células */
+    margin-top: 30px;
+    background-color: var(--card-background);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 10px; /* Arredonda a tabela inteira */
+    overflow: hidden; /* Garante que bordas arredondadas funcionem */
+}
+
+th, td {
+    border: 1px solid var(--border-color); /* Borda suave */
+    padding: 15px; /* Mais padding */
+    text-align: left;
+}
+
+th {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* Arredonda os cantos do cabeçalho */
+th:first-child { border-top-left-radius: 10px; }
+th:last-child { border-top-right-radius: 10px; }
+
+tr:nth-child(even) {
+    background-color: #fcfdfe; /* Fundo suave para linhas pares */
+}
+
+tr:hover {
+    background-color: #eef7ff;
+    transition: background-color 0.2s ease;
+}
+
+td button {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    border-radius: 6px;
+}
+
+.header-app {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 12px;
+    margin-top: 35px;
+    margin-bottom: 25px;
+}
+
+/* --- Responsividade (Media Queries) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .container {
+        margin: 15px auto;
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2, h3 {
+        font-size: 1.6rem;
+    }
+
+    /* Torna a tabela responsiva */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+
+    /* Botões de formulário empilhados */
+    #loginScreen button,
+    #registerScreen button,
+    #taskForm button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+        display: block; /* Garante que cada botão ocupe sua própria linha */
+    }
+
+    #taskForm button:last-of-type {
+        margin-bottom: 0; /* Remove margem do último botão */
+    }
+}
+
+/* Adaptação para tela muito pequena, se necessário */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2, h3 {
+        font-size: 1.4rem;
+    }
+    td button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+}
