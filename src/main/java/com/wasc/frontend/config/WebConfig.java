@@ -10,6 +10,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         // Mapeia a URL raiz "/" para a página de login
-        registry.addViewController("/").setViewName("forward:/login");
+    	registry.addViewController("/").setViewName("redirect:/login");
     }
 }
